@@ -5,7 +5,7 @@ using PracticalCodingTest.Data;
 namespace PracticalCodingTest.NetStandardTests
 {
     [TestFixture]
-    public class UserTests
+    public class PasswordTests
     {
         [Test]
         public void PasswordWithoutNumberThrowsArgumentException()
@@ -35,7 +35,7 @@ namespace PracticalCodingTest.NetStandardTests
             Assert.Throws<ArgumentException>(() => new Password(passwordString));
         }
         [Test]
-        public void PasswordShorterThan5CharactersThrowsException()
+        public void PasswordShorterThan5CharactersThrowsArgumentException()
         {
             // arrange
             var passwordString = "1a";
@@ -44,7 +44,7 @@ namespace PracticalCodingTest.NetStandardTests
             Assert.Throws<ArgumentException>(() => new Password(passwordString));
         }
         [Test]
-        public void PasswordLongerThan12CharactersThrowsException()
+        public void PasswordLongerThan12CharactersThrowsArgumentException()
         {
             // arrange
             var passwordString = "1a1a1a1a1a1a1";
@@ -53,13 +53,13 @@ namespace PracticalCodingTest.NetStandardTests
             Assert.Throws<ArgumentException>(() => new Password(passwordString));
         }
         [Test]
-        public void ProperFormattedPasswordIsValid()
+        public void PasswordWithPatternsThrowsArgumentException()
         {
             // arrange
             var passwordString = "123abc123";
 
             // act / assert
-            Assert.DoesNotThrow(() => new Password(passwordString));
+            Assert.Throws<ArgumentException>(() => new Password(passwordString));
         }
     }
 }
