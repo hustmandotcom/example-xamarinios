@@ -14,8 +14,20 @@ namespace PracticalCodingTest
     [Register ("UserTableViewController")]
     partial class UserTableViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem AddUserButton { get; set; }
+
+        [Action ("AddUserButton_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void AddUserButton_Activated (UIKit.UIBarButtonItem sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (AddUserButton != null) {
+                AddUserButton.Dispose ();
+                AddUserButton = null;
+            }
         }
     }
 }
