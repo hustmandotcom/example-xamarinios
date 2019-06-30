@@ -142,5 +142,15 @@
           <DependentUpon>HomeViewController.cs</DependentUpon>
         </Compile>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\PracticalCodingTest.Handlers\PracticalCodingTest.Handlers.csproj">
+        <Project>{0651CD94-F151-495B-8C8A-A564B11DE846}</Project>
+        <Name>PracticalCodingTest.Handlers</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\PracticalCodingTest.Data\PracticalCodingTest.Data.csproj">
+        <Project>{6655C2D7-C4DE-4F43-BAEE-CA86125BDBB1}</Project>
+        <Name>PracticalCodingTest.Data</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
