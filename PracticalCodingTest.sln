@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalCodingTest.Handler
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalCodingTest.NetStandardTests", "PracticalCodingTest.NetStandardTests\PracticalCodingTest.NetStandardTests.csproj", "{A5E4875C-2B5B-4C31-B43B-B8B947AA7764}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalCodingTest.UnitTests", "PracticalCodingTest.UnitTests\PracticalCodingTest.UnitTests.csproj", "{29A5D2BD-571D-41FF-9083-6974822B1A78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -49,5 +51,13 @@ Global
 		{A5E4875C-2B5B-4C31-B43B-B8B947AA7764}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{A5E4875C-2B5B-4C31-B43B-B8B947AA7764}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{A5E4875C-2B5B-4C31-B43B-B8B947AA7764}.Release|iPhone.Build.0 = Release|Any CPU
+		{29A5D2BD-571D-41FF-9083-6974822B1A78}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{29A5D2BD-571D-41FF-9083-6974822B1A78}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{29A5D2BD-571D-41FF-9083-6974822B1A78}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{29A5D2BD-571D-41FF-9083-6974822B1A78}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{29A5D2BD-571D-41FF-9083-6974822B1A78}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{29A5D2BD-571D-41FF-9083-6974822B1A78}.Debug|iPhone.Build.0 = Debug|iPhone
+		{29A5D2BD-571D-41FF-9083-6974822B1A78}.Release|iPhone.ActiveCfg = Release|iPhone
+		{29A5D2BD-571D-41FF-9083-6974822B1A78}.Release|iPhone.Build.0 = Release|iPhone
 	EndGlobalSection
 EndGlobal

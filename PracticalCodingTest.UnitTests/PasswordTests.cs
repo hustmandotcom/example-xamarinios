@@ -1,8 +1,9 @@
-﻿using System;
+﻿
+using System;
 using NUnit.Framework;
 using PracticalCodingTest.Data;
 
-namespace PracticalCodingTest.NetStandardTests
+namespace PracticalCodingTest.UnitTests
 {
     [TestFixture]
     public class PasswordTests
@@ -19,7 +20,7 @@ namespace PracticalCodingTest.NetStandardTests
         }
         [Test]
         public void PasswordWithoutLetterThrowsArgumentException()
-            {
+        {
             // arrange
             var passwordString = "123";
 
@@ -61,7 +62,7 @@ namespace PracticalCodingTest.NetStandardTests
         public void PasswordWithRepeatingSequenceAtEndThrowsArgumentException()
         {
             // arrange
-            var passwordString = "abcde7878";
+            var passwordString = "1234567878";
 
             // act / assert
             var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
@@ -71,7 +72,7 @@ namespace PracticalCodingTest.NetStandardTests
         public void PasswordWithRepeatingSequenceAtBeginningThrowsArgumentException()
         {
             // arrange
-            var passwordString = "1111abcde";
+            var passwordString = "111123457";
 
             // act / assert
             var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
@@ -81,7 +82,7 @@ namespace PracticalCodingTest.NetStandardTests
         public void PasswordWithRepeatingSequenceAtMiddleThrowsArgumentException()
         {
             // arrange
-            var passwordString = "123abab321";
+            var passwordString = "123434567";
 
             // act / assert
             var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
@@ -91,7 +92,7 @@ namespace PracticalCodingTest.NetStandardTests
         public void PasswordWithRepeatingSequenceThrowsArgumentException()
         {
             // arrange
-            var passwordString = "1234a1234a";
+            var passwordString = "1234512345";
 
             // act / assert
             var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
