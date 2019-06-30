@@ -9,39 +9,26 @@ namespace PracticalCodingTest.Handlers
     {
         private IDatabase<User> _database;
 
+        public IEnumerable<User> Users
+        {
+            get => _database?.GetAll();
+        }
+
         public UserRepository(IDatabase<User> database)
         {
             _database = database;
         }
 
-        public void Add(User entity)
+        public void AddUser(User entity)
         {
-            _database.Insert(entity);
+            _database.Insert(entity.Clone());
         }
 
-        public void Delete(User entity)
+        public User GetUserByUsername(string username)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Edit(User entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<User> List()
-        {
-            return _database.GetAll();
-        }
-
-        public IEnumerable<User> List(Func<User, bool> predicate)
-        {
-            return List().Where(predicate);
+            if (Users.FirstOrDefault(u => u.Username.Equals(username)) is User user)
+                return user;
+            throw new IndexOutOfRangeException(ExceptionMessagesConstant.UserDoesNotExist);
         }
     }
 }

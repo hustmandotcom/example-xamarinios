@@ -4,9 +4,9 @@ using PracticalCodingTest.Data;
 
 namespace PracticalCodingTest.Handlers
 {
-    public interface IDatabase<T> where T : EntityBase
+    public interface IDatabase<T>
     {
         void Insert(T data);
-        IEnumerable<User> GetAll();
+        IEnumerable<T> GetAll();
     }
 }

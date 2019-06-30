@@ -8,5 +8,6 @@ namespace PracticalCodingTest.Data
         public const string MustNotContainSpecialCharacters = "Password can only contain numbers and letters";
         public const string MustBeBetween5And12Characters = "Password must be between 5 and 12 characters";
         public const string MustNotContainPatterns = "Password must not contain noticable patterns";
+        public const string UserDoesNotExist = "User does not exist";
     }
 }
