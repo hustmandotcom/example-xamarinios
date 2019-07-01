@@ -20,10 +20,6 @@ namespace PracticalCodingTest
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton ResetButton { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton SaveButton { get; set; }
 
         [Outlet]
@@ -33,10 +29,6 @@ namespace PracticalCodingTest
         [Action ("PasswordTextField_ValueChanged:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void PasswordTextField_ValueChanged (UIKit.UITextField sender);
-
-        [Action ("ResetButton_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ResetButton_TouchUpInside (UIKit.UIButton sender);
 
         [Action ("SaveButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -51,11 +43,6 @@ namespace PracticalCodingTest
             if (PasswordTextField != null) {
                 PasswordTextField.Dispose ();
                 PasswordTextField = null;
-            }
-
-            if (ResetButton != null) {
-                ResetButton.Dispose ();
-                ResetButton = null;
             }
 
             if (SaveButton != null) {
