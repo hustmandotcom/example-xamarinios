@@ -26,8 +26,7 @@ namespace PracticalCodingTest
 
         public override void ViewWillAppear(bool animated)
         {
-            _usersCache = _userRepository.Users.ToArray();
-            UserTableView.ReloadData();
+            RefreshData();
             base.ViewWillAppear(animated);
         }
 
@@ -51,15 +50,22 @@ namespace PracticalCodingTest
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            var cell = tableView.DequeueReusableCell(_cellIdentifier);
+            var cell = tableView.DequeueReusableCell(_cellIdentifier) 
+                ?? new UITableViewCell(UITableViewCellStyle.Default, _cellIdentifier);
+
             var user = _usersCache[indexPath.Row];
-
-            if (cell == null)
-                cell = new UITableViewCell(UITableViewCellStyle.Default, _cellIdentifier);
-
             cell.TextLabel.Text = user.Username;
-
             return cell;
+        }
+
+        #endregion
+
+        #region Private
+
+        private void RefreshData()
+        {
+            _usersCache = _userRepository.Users.ToArray();
+            UserTableView.ReloadData();
         }
 
         #endregion
