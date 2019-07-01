@@ -21,12 +21,6 @@ namespace PracticalCodingTest
 
         #region UI Event Response
 
-        partial void ResetButton_TouchUpInside(UIButton sender)
-        {
-            UsernameTextField.Text = string.Empty;
-            PasswordTextField.Text = string.Empty;
-        }
-
         partial void SaveButton_TouchUpInside(UIButton sender)
         {
             try
