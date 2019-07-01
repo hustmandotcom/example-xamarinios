@@ -14,8 +14,47 @@ namespace PracticalCodingTest
     [Register ("AddUserViewController")]
     partial class AddUserViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField PasswordTextField { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton ResetButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton SaveButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField UsernameTextField { get; set; }
+
+        [Action ("UIButton2288_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton2288_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (PasswordTextField != null) {
+                PasswordTextField.Dispose ();
+                PasswordTextField = null;
+            }
+
+            if (ResetButton != null) {
+                ResetButton.Dispose ();
+                ResetButton = null;
+            }
+
+            if (SaveButton != null) {
+                SaveButton.Dispose ();
+                SaveButton = null;
+            }
+
+            if (UsernameTextField != null) {
+                UsernameTextField.Dispose ();
+                UsernameTextField = null;
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace PracticalCodingTest
 
         public UserTableViewController(IntPtr handle) : base(handle)
         {
-            _userRepository = new UserRepository(new InMemoryDatabase());
+            _userRepository = AppDelegate.UserRepository;
         }
 
         public override void ViewWillAppear(bool animated)
