@@ -28,16 +28,20 @@ namespace PracticalCodingTest
                 var user = new User(UsernameTextField.Text, new Password(PasswordTextField.Text));
                 UserRepository.AddUser(user);
             }
-            catch (ArgumentException ax)
+            catch (SystemException e) when (e is ArgumentException || e is InvalidOperationException)
             {
-                this.ShowOkAlert(ax.Message);
-            }
-            catch (InvalidOperationException ex)
-            {
-                this.ShowOkAlert(ex.Message);
+                this.ShowFailAlert(e.Message);
+                return;
             }
 
-            DismissViewController(true, null);
+            this.ShowSuccessAlert("A new user has been added");
+            ResetForm();
+        }
+
+        private void ResetForm()
+        {
+            UsernameTextField.Text = "";
+            PasswordTextField.Text = "";
         }
 
         partial void PasswordTextField_ValueChanged(UITextField sender)

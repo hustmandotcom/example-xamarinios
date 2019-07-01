@@ -18,6 +18,10 @@ namespace PracticalCodingTest
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem AddUserButton { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView UserTableView { get; set; }
+
         [Action ("AddUserButton_Activated:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void AddUserButton_Activated (UIKit.UIBarButtonItem sender);
@@ -27,6 +31,11 @@ namespace PracticalCodingTest
             if (AddUserButton != null) {
                 AddUserButton.Dispose ();
                 AddUserButton = null;
+            }
+
+            if (UserTableView != null) {
+                UserTableView.Dispose ();
+                UserTableView = null;
             }
         }
     }

@@ -21,11 +21,13 @@ namespace PracticalCodingTest
         public UserTableViewController(IntPtr handle) : base(handle)
         {
             _userRepository = new UserRepository(new InMemoryDatabase());
+            _usersCache = _userRepository.Users.ToArray();
         }
 
         public override void ViewWillAppear(bool animated)
         {
             _usersCache = _userRepository.Users.ToArray();
+            UserTableView.ReloadData();
             base.ViewWillAppear(animated);
         }
 
