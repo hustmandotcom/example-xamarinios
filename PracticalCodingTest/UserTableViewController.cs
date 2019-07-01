@@ -31,7 +31,7 @@ namespace PracticalCodingTest
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
-            if (segue.Identifier.Equals("AddUserSegue"))
+            if (segue.Identifier.Equals("AddUserViewSegue"))
                 if (segue.DestinationViewController is AddUserViewController addUserViewController)
                     addUserViewController.UserRepository = _userRepository;
 
