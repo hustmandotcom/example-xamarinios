@@ -20,13 +20,22 @@ namespace PracticalCodingTest
 
         public UserTableViewController(IntPtr handle) : base(handle)
         {
-            _userRepository = AppDelegate.UserRepository;
+            _userRepository = new UserRepository(new InMemoryDatabase());
         }
 
         public override void ViewWillAppear(bool animated)
         {
-            base.ViewWillAppear(animated);
             _usersCache = _userRepository.Users.ToArray();
+            base.ViewWillAppear(animated);
+        }
+
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.Identifier.Equals("AddUserSegue"))
+                if (segue.DestinationViewController is AddUserViewController addUserViewController)
+                    addUserViewController.UserRepository = _userRepository;
+
+            base.PrepareForSegue(segue, sender);
         }
 
         #endregion
@@ -52,5 +61,6 @@ namespace PracticalCodingTest
         }
 
         #endregion
+
     }
 }

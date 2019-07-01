@@ -11,8 +11,6 @@ namespace PracticalCodingTest
     public class AppDelegate : UIApplicationDelegate
     {
         // class-level declarations
-        public static IUserRepository UserRepository { get; private set; }
-
         public override UIWindow Window
         {
             get;
@@ -24,7 +22,6 @@ namespace PracticalCodingTest
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
             
-            UserRepository = new UserRepository(new InMemoryDatabase());
             return true;
         }
 

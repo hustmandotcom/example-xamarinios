@@ -30,9 +30,21 @@ namespace PracticalCodingTest
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField UsernameTextField { get; set; }
 
-        [Action ("UIButton2288_TouchUpInside:")]
+        [Action ("PasswordTextField_ValueChanged:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton2288_TouchUpInside (UIKit.UIButton sender);
+        partial void PasswordTextField_ValueChanged (UIKit.UITextField sender);
+
+        [Action ("ResetButton_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ResetButton_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("SaveButton_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void SaveButton_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("UsernameTextField_ValueChanged:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UsernameTextField_ValueChanged (UIKit.UITextField sender);
 
         void ReleaseDesignerOutlets ()
         {

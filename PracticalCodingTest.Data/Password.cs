@@ -12,6 +12,7 @@ namespace PracticalCodingTest.Data
         private const int MinimumSequenceLength = 2;
         private const int MaximumSequenceLength = 6;
         private string _passwordString;
+
         public string PasswordString
         {
             get => _passwordString;
