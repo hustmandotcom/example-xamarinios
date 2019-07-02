@@ -32,5 +32,6 @@ namespace PracticalCodingTest.Domain
                 return user;
             throw new IndexOutOfRangeException(ExceptionMessagesConstant.UserDoesNotExist);
         }
+
     }
 }

@@ -91,7 +91,7 @@
                                 <connections/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2257" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Password" clearButtonMode="whileEditing">
-                                <rect key="frame" x="20" y="198" width="374" height="30"/>
+                                <rect key="frame" x="20" y="215" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -99,20 +99,33 @@
                                 <connections/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2258" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="20" y="169" width="374" height="21"/>
+                                <rect key="frame" x="20" y="186" width="374" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2287" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="20" y="249" width="374" height="60"/>
+                                <rect key="frame" x="20" y="294" width="374" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="SaveButton_TouchUpInside:" destination="1277" id="2731" eventType="touchUpInside"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5880" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="20" y="157" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13" weight="light"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0.94117647058823528" green="0.043137254901960784" blue="0.043137254901960784" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5927" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="20" y="253" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13" weight="light"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0.94117647058823528" green="0.043137254901960784" blue="0.043137254901960784" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                     </view>
                     <navigationItem title="Add User" id="1824" key="navigationItem"/>
@@ -120,6 +133,8 @@
                         <outlet property="UsernameTextField" destination="2238" id="name-outlet-2238"/>
                         <outlet property="PasswordTextField" destination="2257" id="name-outlet-2257"/>
                         <outlet property="SaveButton" destination="2287" id="name-outlet-2287"/>
+                        <outlet property="UsernameErrorLabel" destination="5880" id="name-outlet-5880"/>
+                        <outlet property="PasswordErrorLabel" destination="5927" id="name-outlet-5927"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1279" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -15,11 +15,19 @@ namespace PracticalCodingTest.Application
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel PasswordErrorLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField PasswordTextField { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton SaveButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel UsernameErrorLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -31,6 +39,11 @@ namespace PracticalCodingTest.Application
 
         void ReleaseDesignerOutlets ()
         {
+            if (PasswordErrorLabel != null) {
+                PasswordErrorLabel.Dispose ();
+                PasswordErrorLabel = null;
+            }
+
             if (PasswordTextField != null) {
                 PasswordTextField.Dispose ();
                 PasswordTextField = null;
@@ -39,6 +52,11 @@ namespace PracticalCodingTest.Application
             if (SaveButton != null) {
                 SaveButton.Dispose ();
                 SaveButton = null;
+            }
+
+            if (UsernameErrorLabel != null) {
+                UsernameErrorLabel.Dispose ();
+                UsernameErrorLabel = null;
             }
 
             if (UsernameTextField != null) {
