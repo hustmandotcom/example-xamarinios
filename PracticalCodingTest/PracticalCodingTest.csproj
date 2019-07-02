@@ -147,10 +147,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DatabaseInterfaces\DatabaseInterfaces.csproj">
-      <Project>{646411F7-2891-4360-8B56-21059823F2B1}</Project>
-      <Name>DatabaseInterfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PracticalCodingTest.Database\Database.csproj">
       <Project>{3A3CA0FF-026E-45EA-8F6B-6C2AE9344C72}</Project>
       <Name>Database</Name>
