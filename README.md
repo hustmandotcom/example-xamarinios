@@ -1,2 +1,2 @@
-# example-xamarinios
+# example-xamarin-ios
 an example xamarin.ios application
