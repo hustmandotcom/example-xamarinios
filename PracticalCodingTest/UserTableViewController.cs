@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using Foundation;
 using PracticalCodingTest.Data;
+using PracticalCodingTest.Database;
+using PracticalCodingTest.Domain;
 using PracticalCodingTest.DomainInterfaces;
 using UIKit;
 

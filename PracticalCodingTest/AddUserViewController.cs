@@ -1,5 +1,6 @@
 using System;
 using PracticalCodingTest.Application.Extensions;
+using PracticalCodingTest.Data;
 using PracticalCodingTest.DomainInterfaces;
 using UIKit;
 
@@ -8,6 +9,8 @@ namespace PracticalCodingTest.Application
     public partial class AddUserViewController : UIViewController
     {
         public IUserRepository UserRepository { get; set; }
+
+        private User _newUser = User.DefaultUser();
 
         #region Class
         public AddUserViewController(IntPtr handle) : base(handle)
@@ -22,8 +25,7 @@ namespace PracticalCodingTest.Application
         {
             try
             {
-                //var user = new User(UsernameTextField.Text, new Password(PasswordTextField.Text));
-                //UserRepository.AddUser(user);
+                UserRepository.AddUser(new User(_newUser.Username, _newUser.Password));
             }
             catch (SystemException e) when (e is ArgumentException || e is InvalidOperationException)
             {
@@ -39,14 +41,18 @@ namespace PracticalCodingTest.Application
         {
             UsernameTextField.Text = "";
             PasswordTextField.Text = "";
+            _newUser = User.DefaultUser();
         }
 
         partial void PasswordTextField_ValueChanged(UITextField sender)
         {
+            _newUser.Password = sender.Text;
+            _newUser.Validate();
         }
 
         partial void UsernameTextField_ValueChanged(UITextField sender)
         {
+            _newUser.Username = sender.Text;
         }
 
         #endregion

@@ -43,6 +43,11 @@ namespace PracticalCodingTest.Data
             return Clone();
         }
 
+        public static User DefaultUser()
+        {
+            return new User("", "");
+        }
+
         #region Password Validation
 
         private const int MinimumPasswordLength = 5;

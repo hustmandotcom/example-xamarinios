@@ -12,7 +12,7 @@ namespace PracticalCodingTest.Database
 
         public IEnumerable<User> GetAll()
         {
-            return _users;
+            return _users.Select(u => u.Clone());
         }
 
         public void Insert(User data)
