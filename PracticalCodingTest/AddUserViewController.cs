@@ -56,6 +56,48 @@ namespace PracticalCodingTest.Application
             _currentUsernames = UserRepository.Users.Select(u => u.Username);
         }
 
+        private bool IsValidPassword(string password)
+        {
+            _newUser.Password = password;
+            _newUser.ValidatePassword();
+
+            if (!_newUser.IsValid
+                && _newUser.Errors["Password"] is string message
+                && _newUser.Password.Length > 0)
+                PasswordErrorLabel.Text = message;
+            else
+                PasswordErrorLabel.Text = "";
+
+            return _newUser.Errors.Count < 1;
+        }
+
+        private bool IsValidUser(string username)
+        {
+            _newUser.Username = username;
+            _newUser.ValidateUsername(_currentUsernames);
+
+            if (!_newUser.IsValid
+                && _newUser.Errors["Username"] is string message
+                && _newUser.Username.Length > 0)
+                UsernameErrorLabel.Text = message;
+            else
+                UsernameErrorLabel.Text = "";
+
+            return !_currentUsernames.Contains(_newUser.Username);
+        }
+
+        private string GetUpdatedString(UITextField textfield, string replacementString)
+        {
+            var updatedText = textfield.Text + replacementString;
+
+            if (replacementString.Equals(""))
+                updatedText = textfield.Text.Length > 0
+                    ? textfield.Text.TrimEnd(textfield.Text[textfield.Text.Length - 1])
+                    : "";
+
+            return updatedText;
+        }
+
         #endregion
 
         #region UI Event Response
@@ -64,6 +106,12 @@ namespace PracticalCodingTest.Application
         {
             try
             {
+                _newUser.Username = UsernameTextField.Text;
+                _newUser.Password = PasswordTextField.Text;
+
+                if (!IsValidUser(_newUser.Username) || !IsValidPassword(_newUser.Password))
+                    return;
+                
                 UserRepository.AddUser(new User(_newUser.Username, _newUser.Password));
             }
             catch (SystemException e) when (e is ArgumentException || e is InvalidOperationException)
@@ -79,25 +127,18 @@ namespace PracticalCodingTest.Application
         private bool PasswordTextFieldShouldChangeCharacters(UITextField textfield, NSRange range,
             string replacementString)
         {
-            _newUser.Password = replacementString.Equals(string.Empty) ? "" : PasswordTextField.Text + replacementString;
-            _newUser.Validate();
-
-            if (_newUser.Errors.Count > 0 && _newUser.Errors["Password"] is string message && _newUser.Password.Length > 0)
-                PasswordErrorLabel.Text = message;
-            else
-                PasswordErrorLabel.Text = "";
+            var newPassword = GetUpdatedString(textfield, replacementString);
+            IsValidPassword(newPassword);
 
             return true;
         }
 
+
         private bool UsernameTextFieldShouldChangeCharacters(UITextField textfield, NSRange range,
             string replacementString)
         {
-            _newUser.Username = replacementString.Equals(string.Empty) ? "" : UsernameTextField.Text + replacementString;
-            if (_currentUsernames.Contains(_newUser.Username))
-                UsernameErrorLabel.Text = "Username already exists";
-            else
-                UsernameErrorLabel.Text = "";
+            var username = GetUpdatedString(textfield, replacementString);
+            IsValidUser(username);
 
             return true;
         }

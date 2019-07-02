@@ -20,22 +20,26 @@ namespace PracticalCodingTest.Data
 
         public string Password { get; set; }
 
-        public IReadOnlyDictionary<string, string> Errors { get; private set; }    
-        
+        public bool IsValid => Errors.Count < 1;
+
+        public IReadOnlyDictionary<string, string> Errors { get; private set; }
+
         public User Clone()
         {
             var userClone = new User(this.Username, this.Password);
             return userClone;
         }
 
-        public void Validate()
+        public User ValidatePassword()
         {
             var dictionary = new Dictionary<string, string>();
             var results = new List<ValidationResult>();
-            
-            results.Add(ValidatePassword(Password, nameof(Password)));
-            
+
+            results.Add(ValidatePasswordValidationResult(Password, nameof(Password)));
+
             Errors = new ReadOnlyDictionary<string, string>(dictionary.AddValidationResults(results));
+
+            return this;
         }
 
         object ICloneable.Clone()
@@ -55,24 +59,41 @@ namespace PracticalCodingTest.Data
         private const int MinimumSequenceLength = 2;
         private const int MaximumSequenceLength = 6;
 
-        private ValidationResult ValidatePassword(string value, string memberName)
+        private ValidationResult ValidatePasswordValidationResult(string value, string memberName)
         {
             if (!value.Any(char.IsDigit))
-                return new ValidationResult(ValidationMessagesConstant.MustContainNumber, new List<string>(){memberName});
+                return new ValidationResult(ValidationMessagesConstant.MustContainNumber,
+                    new List<string>() {memberName});
             if (!value.Any(char.IsLetter))
-                return new ValidationResult(ValidationMessagesConstant.MustContainLetter, new List<string>() { memberName });
+                return new ValidationResult(ValidationMessagesConstant.MustContainLetter,
+                    new List<string>() {memberName});
 
             var specialCharacters = Regex.Replace(value, "[a-zA-Z\\d]", "");
             if (specialCharacters.Length > 0)
-                return new ValidationResult(ValidationMessagesConstant.MustNotContainSpecialCharacters, new List<string>() { memberName });
+                return new ValidationResult(ValidationMessagesConstant.MustNotContainSpecialCharacters,
+                    new List<string>() {memberName});
 
             if (value.Length < MinimumPasswordLength || value.Length > MaximumPasswordLength)
-                return new ValidationResult(ValidationMessagesConstant.MustBeBetween5And12Characters, new List<string>() { memberName });
+                return new ValidationResult(ValidationMessagesConstant.MustBeBetween5And12Characters,
+                    new List<string>() {memberName});
 
             if (PatternFound(value))
-                return new ValidationResult(ValidationMessagesConstant.MustNotContainPatterns, new List<string>() { memberName });
+                return new ValidationResult(ValidationMessagesConstant.MustNotContainPatterns,
+                    new List<string>() {memberName});
 
             return ValidationResult.Success;
+        }
+
+        public void ValidateUsername(IEnumerable<string> currentUsernames)
+        {
+            var dictionary = new Dictionary<string, string>();
+
+            if (currentUsernames.Contains(Username))
+            {
+                dictionary.Add("Username", "Username already exists");
+            }
+
+            Errors = new ReadOnlyDictionary<string, string>(dictionary);
         }
 
         private bool PatternFound(string value)
@@ -88,8 +109,10 @@ namespace PracticalCodingTest.Data
                     if (stringToMatch.Equals(stringToCheck)) return true;
                 }
             }
+
             return false;
         }
+
         #endregion
     }
 }

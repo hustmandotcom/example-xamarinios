@@ -16,7 +16,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
 
             // assert
             Assert.That(user.Errors.ContainsKey("Password"));
@@ -31,7 +31,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
             var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
 
             // assert
@@ -49,7 +49,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
             var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
 
             // assert
@@ -67,7 +67,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
             var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
 
             // assert
@@ -84,7 +84,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
             var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
 
             // assert
@@ -101,7 +101,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
             var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
 
             // assert
@@ -118,7 +118,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
             var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
 
             // assert
@@ -135,7 +135,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
             var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
 
             // assert
@@ -152,7 +152,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
             var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
 
             // assert
@@ -169,7 +169,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
             var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
 
             // assert
@@ -186,7 +186,7 @@ namespace PracticalCodingTest.UnitTests
 
             // act
             var user = new User(username, password);
-            user.Validate();
+            user.ValidatePassword();
 
             // assert
             Assert.That(user.Errors.Count < 1);
