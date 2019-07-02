@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DatabaseInterfaces\DatabaseInterfaces.csproj" />
-    <ProjectReference Include="..\PracticalCodingTest.DatabaseInterfaces\DatabaseInterfaces.csproj" />
     <ProjectReference Include="..\PracticalCodingTest.Data\Data.csproj" />
     <ProjectReference Include="..\PracticalCodingTest.DomainInterfaces\DomainInterfaces.csproj" />
   </ItemGroup>

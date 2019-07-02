@@ -144,16 +144,13 @@
     <Compile Include="Extensions\UIViewControllerExtensions.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="TEst.cs" />
     <Compile Include="UserTableViewController.cs" />
     <Compile Include="UserTableViewController.designer.cs">
       <DependentUpon>UserTableViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PracticalCodingTest.DatabaseInterfaces\DatabaseInterfaces.csproj">
-      <Project>{D241CBF6-2FFD-49D1-8625-8C97594BA8E3}</Project>
-      <Name>DatabaseInterfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PracticalCodingTest.Database\Database.csproj">
       <Project>{3A3CA0FF-026E-45EA-8F6B-6C2AE9344C72}</Project>
       <Name>Database</Name>
