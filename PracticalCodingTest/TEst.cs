@@ -10,9 +10,8 @@ namespace PracticalCodingTest.Application
 {
     class TEst : UITextFieldDelegate
     {
-        public override bool ShouldChangeCharacters(UITextField textField, NSRange range, string replacementString)
+        public override void DidChange(NSString forKey, NSKeyValueSetMutationKind mutationKind, NSSet objects)
         {
-            return base.ShouldChangeCharacters(textField, range, replacementString);
         }
     }
 }

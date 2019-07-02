@@ -79,14 +79,13 @@ namespace PracticalCodingTest.Application
         private bool PasswordTextFieldShouldChangeCharacters(UITextField textfield, NSRange range,
             string replacementString)
         {
-            if (replacementString.Length < 1)
-                PasswordErrorLabel.Text = "";
-
-            _newUser.Password = replacementString;
+            _newUser.Password = replacementString.Equals(string.Empty) ? "" : PasswordTextField.Text + replacementString;
             _newUser.Validate();
 
-            if (_newUser.Errors.Count > 0 && _newUser.Errors["Password"] is string message)
+            if (_newUser.Errors.Count > 0 && _newUser.Errors["Password"] is string message && _newUser.Password.Length > 0)
                 PasswordErrorLabel.Text = message;
+            else
+                PasswordErrorLabel.Text = "";
 
             return true;
         }
@@ -94,12 +93,11 @@ namespace PracticalCodingTest.Application
         private bool UsernameTextFieldShouldChangeCharacters(UITextField textfield, NSRange range,
             string replacementString)
         {
-            if (replacementString.Length < 1)
-                UsernameErrorLabel.Text = "";
-
-            _newUser.Username = replacementString;
-            if (_currentUsernames.Contains(replacementString))
+            _newUser.Username = replacementString.Equals(string.Empty) ? "" : UsernameTextField.Text + replacementString;
+            if (_currentUsernames.Contains(_newUser.Username))
                 UsernameErrorLabel.Text = "Username already exists";
+            else
+                UsernameErrorLabel.Text = "";
 
             return true;
         }
