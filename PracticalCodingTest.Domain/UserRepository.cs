@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using PracticalCodingTest.Data;
+using PracticalCodingTest.DatabaseInterfaces;
+using PracticalCodingTest.DomainInterfaces;
 
-namespace PracticalCodingTest.Handlers
+namespace PracticalCodingTest.Domain
 {
     public class UserRepository : IUserRepository
     {
-        private IDatabase<User> _database;
+        private readonly IDatabase<User> _database;
 
         public IEnumerable<User> Users
         {

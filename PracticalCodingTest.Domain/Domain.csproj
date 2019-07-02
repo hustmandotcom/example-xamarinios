@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>PracticalCodingTest.Domain</AssemblyName>
+    <RootNamespace>PracticalCodingTest.Domain</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseInterfaces\DatabaseInterfaces.csproj" />
+    <ProjectReference Include="..\PracticalCodingTest.Data\Data.csproj" />
+    <ProjectReference Include="..\PracticalCodingTest.DomainInterfaces\DomainInterfaces.csproj" />
+  </ItemGroup>
+
+</Project>

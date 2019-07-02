@@ -1,12 +1,9 @@
-using Foundation;
-using PracticalCodingTest.Data;
-using PracticalCodingTest.Extensions;
-using PracticalCodingTest.Handlers;
 using System;
-using System.Collections.Generic;
+using PracticalCodingTest.Application.Extensions;
+using PracticalCodingTest.DomainInterfaces;
 using UIKit;
 
-namespace PracticalCodingTest
+namespace PracticalCodingTest.Application
 {
     public partial class AddUserViewController : UIViewController
     {
@@ -25,8 +22,8 @@ namespace PracticalCodingTest
         {
             try
             {
-                var user = new User(UsernameTextField.Text, new Password(PasswordTextField.Text));
-                UserRepository.AddUser(user);
+                //var user = new User(UsernameTextField.Text, new Password(PasswordTextField.Text));
+                //UserRepository.AddUser(user);
             }
             catch (SystemException e) when (e is ArgumentException || e is InvalidOperationException)
             {

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using PracticalCodingTest.Data;
+using PracticalCodingTest.DatabaseInterfaces;
 
-namespace PracticalCodingTest.Handlers.Databases
+namespace PracticalCodingTest.Database
 {
     public class InMemoryDatabase : IDatabase<User>
     {
-        private List<User> _users = new List<User>();
+        private readonly List<User> _users = new List<User>();
 
         public IEnumerable<User> GetAll()
         {

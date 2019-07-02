@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PracticalCodingTest.Data;
 
-namespace PracticalCodingTest.Handlers
+namespace PracticalCodingTest.DomainInterfaces
 {
     public interface IUserRepository
     {

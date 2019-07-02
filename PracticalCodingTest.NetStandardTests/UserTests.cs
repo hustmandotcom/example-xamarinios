@@ -1,8 +1,7 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using PracticalCodingTest.Data;
 
-namespace PracticalCodingTest.NetStandardTests
+namespace PracticalCodingTest.UnitTests
 {
     [TestFixture]
     public class UserTests
@@ -12,8 +11,7 @@ namespace PracticalCodingTest.NetStandardTests
         {
             // arrange
             var username = "test user";
-            var passwordString = "123abc4332";
-            var password = new Password(passwordString);
+            var password = "123abc4332";
 
             // act
             var user = new User(username, password);
@@ -28,8 +26,7 @@ namespace PracticalCodingTest.NetStandardTests
             // arrange
             var username = "test user";
             var newUsername = "test user 2";
-            var passwordString = "123abc4332";
-            var password = new Password(passwordString);
+            var password = "123abc4332";
 
             // act
             var user = new User(username, password);
@@ -45,8 +42,7 @@ namespace PracticalCodingTest.NetStandardTests
             // arrange
             var username = "test user";
             var newUsername = "test user 2";
-            var passwordString = "123abc4332";
-            var password = new Password(passwordString);
+            var password = "123abc4332";
 
             // act
             var user = new User(username, password);
@@ -61,10 +57,8 @@ namespace PracticalCodingTest.NetStandardTests
         {
             // arrange
             var username = "test user";
-            var passwordString = "123abc4332";
-            var updatedPasswordString = "1234gft54";
-            var password = new Password(passwordString);
-            var updatedPassword = new Password(updatedPasswordString);
+            var password = "123abc4332";
+            var updatedPassword = "1234gft54";
 
             // act
             var user = new User(username, password);
@@ -79,10 +73,8 @@ namespace PracticalCodingTest.NetStandardTests
         {
             // arrange
             var username = "test user";
-            var passwordString = "123abc4332";
-            var updatedPasswordString = "1234gft54";
-            var password = new Password(passwordString);
-            var updatedPassword = new Password(updatedPasswordString);
+            var password = "123abc4332";
+            var updatedPassword = "1234gft54";
 
             // act
             var user = new User(username, password);

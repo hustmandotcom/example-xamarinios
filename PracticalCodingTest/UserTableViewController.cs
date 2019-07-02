@@ -1,19 +1,16 @@
+using System;
+using System.Linq;
 using Foundation;
 using PracticalCodingTest.Data;
-using PracticalCodingTest.Handlers;
-using PracticalCodingTest.Handlers.Databases;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PracticalCodingTest.DomainInterfaces;
 using UIKit;
 
-namespace PracticalCodingTest
+namespace PracticalCodingTest.Application
 {
     public partial class UserTableViewController : UITableViewController
     {
-        private IUserRepository _userRepository;
-        private const string _cellIdentifier = "TableCell";
+        private readonly IUserRepository _userRepository;
+        private const string CellIdentifier = "TableCell";
         private User[] _usersCache;
 
         #region Class
@@ -50,8 +47,8 @@ namespace PracticalCodingTest
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            var cell = tableView.DequeueReusableCell(_cellIdentifier) 
-                ?? new UITableViewCell(UITableViewCellStyle.Default, _cellIdentifier);
+            var cell = tableView.DequeueReusableCell(CellIdentifier) 
+                ?? new UITableViewCell(UITableViewCellStyle.Default, CellIdentifier);
 
             var user = _usersCache[indexPath.Row];
             cell.TextLabel.Text = user.Username;

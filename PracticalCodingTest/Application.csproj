@@ -7,7 +7,7 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{edc1b0fa-90cd-4038-8fad-98fe74adb368}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PracticalCodingTest</RootNamespace>
+    <RootNamespace>PracticalCodingTest.Application</RootNamespace>
     <AssemblyName>PracticalCodingTest</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
@@ -146,13 +146,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PracticalCodingTest.Handlers\PracticalCodingTest.Handlers.csproj">
-      <Project>{0651CD94-F151-495B-8C8A-A564B11DE846}</Project>
-      <Name>PracticalCodingTest.Handlers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PracticalCodingTest.Data\PracticalCodingTest.Data.csproj">
+    <ProjectReference Include="..\PracticalCodingTest.Data\Data.csproj">
       <Project>{6655C2D7-C4DE-4F43-BAEE-CA86125BDBB1}</Project>
-      <Name>PracticalCodingTest.Data</Name>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PracticalCodingTest.DomainInterfaces\DomainInterfaces.csproj">
+      <Project>{58FE3148-4DE9-4037-9B90-A83436AE3B8F}</Project>
+      <Name>DomainInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

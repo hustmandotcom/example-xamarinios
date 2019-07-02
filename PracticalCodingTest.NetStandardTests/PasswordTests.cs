@@ -1,110 +1,195 @@
-﻿using System;
+﻿using System.Linq;
 using NUnit.Framework;
 using PracticalCodingTest.Data;
 
-namespace PracticalCodingTest.NetStandardTests
+namespace PracticalCodingTest.UnitTests
 {
     [TestFixture]
     public class PasswordTests
     {
         [Test]
-        public void PasswordWithoutNumberThrowsArgumentException()
+        public void EmptyPasswordAddsValidationResult()
         {
             // arrange
-            var passwordString = "abc";
+            var password = "";
+            var username = "Test user";
 
-            // act / assert
-            var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
-            Assert.That(ex.Message.Equals(ExceptionMessagesConstant.MustContainNumber));
-        }
-        [Test]
-        public void PasswordWithoutLetterThrowsArgumentException()
-            {
-            // arrange
-            var passwordString = "123";
+            // act
+            var user = new User(username, password);
+            user.Validate();
 
-            // act / assert
-            var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
-            Assert.That(ex.Message.Equals(ExceptionMessagesConstant.MustContainLetter));
+            // assert
+            Assert.That(user.Errors.ContainsKey("Password"));
         }
+
         [Test]
-        public void PasswordWithSpecialCharactersThrowsArgumentException()
+        public void PasswordWithoutNumberFailsValidation()
         {
             // arrange
-            var passwordString = "123abc%";
+            var password = "abcde";
+            var username = "Test user";
 
-            // act / assert
-            var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
-            Assert.That(ex.Message.Equals(ExceptionMessagesConstant.MustNotContainSpecialCharacters));
+            // act
+            var user = new User(username, password);
+            user.Validate();
+            var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
+
+            // assert
+            Assert.NotNull(errorKeyValuePair);
+            Assert.That(errorKeyValuePair.Key.Equals("Password"));
+            Assert.That(errorKeyValuePair.Value.Equals(ValidationMessagesConstant.MustContainNumber));
         }
+
         [Test]
-        public void PasswordShorterThan5CharactersThrowsArgumentException()
+        public void PasswordWithoutLetterFailsValidation()
         {
             // arrange
-            var passwordString = "1a";
+            var password = "12345";
+            var username = "Test user";
 
-            // act / assert
-            var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
-            Assert.That(ex.Message.Equals(ExceptionMessagesConstant.MustBeBetween5And12Characters));
+            // act
+            var user = new User(username, password);
+            user.Validate();
+            var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
+
+            // assert
+            Assert.NotNull(errorKeyValuePair);
+            Assert.That(errorKeyValuePair.Key.Equals("Password"));
+            Assert.That(errorKeyValuePair.Value.Equals(ValidationMessagesConstant.MustContainLetter));
         }
+
         [Test]
-        public void PasswordLongerThan12CharactersThrowsArgumentException()
+        public void PasswordWithSpecialCharactersFailsValidation()
         {
             // arrange
-            var passwordString = "1a1a1a1a1a1a1";
+            var password = "12345a$";
+            var username = "Test user";
 
-            // act / assert
-            var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
-            Assert.That(ex.Message.Equals(ExceptionMessagesConstant.MustBeBetween5And12Characters));
+            // act
+            var user = new User(username, password);
+            user.Validate();
+            var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
+
+            // assert
+            Assert.NotNull(errorKeyValuePair);
+            Assert.That(errorKeyValuePair.Key.Equals("Password"));
+            Assert.That(errorKeyValuePair.Value.Equals(ValidationMessagesConstant.MustNotContainSpecialCharacters));
         }
         [Test]
-        public void PasswordWithRepeatingSequenceAtEndThrowsArgumentException()
+        public void PasswordShorterThan5CharactersFailsValidation()
         {
             // arrange
-            var passwordString = "abcde7878";
+            var password = "12a";
+            var username = "Test user";
 
-            // act / assert
-            var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
-            Assert.That(ex.Message.Equals(ExceptionMessagesConstant.MustNotContainPatterns));
+            // act
+            var user = new User(username, password);
+            user.Validate();
+            var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
+
+            // assert
+            Assert.NotNull(errorKeyValuePair);
+            Assert.That(errorKeyValuePair.Key.Equals("Password"));
+            Assert.That(errorKeyValuePair.Value.Equals(ValidationMessagesConstant.MustBeBetween5And12Characters));
         }
         [Test]
-        public void PasswordWithRepeatingSequenceAtBeginningThrowsArgumentException()
+        public void PasswordLongerThan12CharactersFailsValidation()
         {
             // arrange
-            var passwordString = "1111abcde";
+            var password = "12a1231231231";
+            var username = "Test user";
 
-            // act / assert
-            var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
-            Assert.That(ex.Message.Equals(ExceptionMessagesConstant.MustNotContainPatterns));
+            // act
+            var user = new User(username, password);
+            user.Validate();
+            var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
+
+            // assert
+            Assert.NotNull(errorKeyValuePair);
+            Assert.That(errorKeyValuePair.Key.Equals("Password"));
+            Assert.That(errorKeyValuePair.Value.Equals(ValidationMessagesConstant.MustBeBetween5And12Characters));
         }
         [Test]
-        public void PasswordWithRepeatingSequenceAtMiddleThrowsArgumentException()
+        public void PasswordWithRepeatingSequenceAtEndFailsValidation()
         {
             // arrange
-            var passwordString = "123abab321";
+            var password = "12asd33333";
+            var username = "Test user";
 
-            // act / assert
-            var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
-            Assert.That(ex.Message.Equals(ExceptionMessagesConstant.MustNotContainPatterns));
+            // act
+            var user = new User(username, password);
+            user.Validate();
+            var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
+
+            // assert
+            Assert.NotNull(errorKeyValuePair);
+            Assert.That(errorKeyValuePair.Key.Equals("Password"));
+            Assert.That(errorKeyValuePair.Value.Equals(ValidationMessagesConstant.MustNotContainPatterns));
         }
         [Test]
-        public void PasswordWithRepeatingSequenceThrowsArgumentException()
+        public void PasswordWithRepeatingSequenceAtBeginningFailsValidation()
         {
             // arrange
-            var passwordString = "1234a1234a";
+            var password = "11111asdvxc";
+            var username = "Test user";
 
-            // act / assert
-            var ex = Assert.Throws<ArgumentException>(() => new Password(passwordString));
-            Assert.That(ex.Message.Equals(ExceptionMessagesConstant.MustNotContainPatterns));
+            // act
+            var user = new User(username, password);
+            user.Validate();
+            var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
+
+            // assert
+            Assert.NotNull(errorKeyValuePair);
+            Assert.That(errorKeyValuePair.Key.Equals("Password"));
+            Assert.That(errorKeyValuePair.Value.Equals(ValidationMessagesConstant.MustNotContainPatterns));
+        }
+        [Test]
+        public void PasswordWithRepeatingSequenceAtMiddleFailsValidation()
+        {
+            // arrange
+            var password = "axv22222asd";
+            var username = "Test user";
+
+            // act
+            var user = new User(username, password);
+            user.Validate();
+            var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
+
+            // assert
+            Assert.NotNull(errorKeyValuePair);
+            Assert.That(errorKeyValuePair.Key.Equals("Password"));
+            Assert.That(errorKeyValuePair.Value.Equals(ValidationMessagesConstant.MustNotContainPatterns));
+        }
+        [Test]
+        public void PasswordWithRepeatingSequenceFailsValidation()
+        {
+            // arrange
+            var password = "22222a222";
+            var username = "Test user";
+
+            // act
+            var user = new User(username, password);
+            user.Validate();
+            var errorKeyValuePair = user.Errors.FirstOrDefault(e => e.Key.Equals("Password"));
+
+            // assert
+            Assert.NotNull(errorKeyValuePair);
+            Assert.That(errorKeyValuePair.Key.Equals("Password"));
+            Assert.That(errorKeyValuePair.Value.Equals(ValidationMessagesConstant.MustNotContainPatterns));
         }
         [Test]
         public void CorrectPasswordIsValid()
         {
             // arrange
-            var passwordString = "123abc432";
+            var password = "abcd4321";
+            var username = "Test user";
 
-            // act / assert
-            Assert.DoesNotThrow(() => new Password(passwordString));
+            // act
+            var user = new User(username, password);
+            user.Validate();
+
+            // assert
+            Assert.That(user.Errors.Count < 1);
         }
     }
 }

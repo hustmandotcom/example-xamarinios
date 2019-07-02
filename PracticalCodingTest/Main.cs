@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace PracticalCodingTest
+namespace PracticalCodingTest.Application
 {
     public class Application
     {

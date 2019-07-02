@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <AssemblyName>PracticalCodingTest.UnitTests</AssemblyName>
+
+    <RootNamespace>PracticalCodingTest.UnitTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseInterfaces\DatabaseInterfaces.csproj" />
+    <ProjectReference Include="..\PracticalCodingTest.Database\Database.csproj" />
+    <ProjectReference Include="..\PracticalCodingTest.Data\Data.csproj" />
+    <ProjectReference Include="..\PracticalCodingTest.DomainInterfaces\DomainInterfaces.csproj" />
+    <ProjectReference Include="..\PracticalCodingTest.Domain\Domain.csproj" />
+  </ItemGroup>
+</Project>

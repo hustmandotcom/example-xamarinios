@@ -1,45 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace PracticalCodingTest.Data
 {
-    public class Password
+    class PasswordValidationAttribute : ValidationAttribute
     {
         private const int MinimumPasswordLength = 5;
         private const int MaximumPasswordLength = 12;
         private const int MinimumSequenceLength = 2;
         private const int MaximumSequenceLength = 6;
-        private string _passwordString;
 
-        public string PasswordString
-        {
-            get => _passwordString;
-            private set { _passwordString = ValidPassword(value); }
-        }
-
-        private string ValidPassword(string value)
+        private static ValidationResult Validate(string value)
         {
             if (!value.Any(char.IsDigit))
-                throw new ArgumentException(ExceptionMessagesConstant.MustContainNumber);
+                return new ValidationResult(ValidationMessagesConstant.MustContainNumber);
             if (!value.Any(char.IsLetter))
-                throw new ArgumentException(ExceptionMessagesConstant.MustContainLetter);
+                return new ValidationResult(ValidationMessagesConstant.MustContainLetter);
 
             var specialCharacters = Regex.Replace(value, "[a-zA-Z\\d]", "");
             if (specialCharacters.Length > 0)
-                throw new ArgumentException(ExceptionMessagesConstant.MustNotContainSpecialCharacters);
-            
+                return new ValidationResult(ValidationMessagesConstant.MustNotContainSpecialCharacters);
+
             if (value.Length < MinimumPasswordLength || value.Length > MaximumPasswordLength)
-                throw new ArgumentException(ExceptionMessagesConstant.MustBeBetween5And12Characters);
+                return new ValidationResult(ValidationMessagesConstant.MustBeBetween5And12Characters);
 
             if (PatternFound(value))
-                throw new ArgumentException(ExceptionMessagesConstant.MustNotContainPatterns);
+                return new ValidationResult(ValidationMessagesConstant.MustNotContainPatterns);
 
-            return value;
+            return ValidationResult.Success;
         }
 
-        private bool PatternFound(string value)
+        private static bool PatternFound(string value)
         {
             for (int startingIndex = 0; startingIndex < value.Length; startingIndex++)
             {
@@ -55,10 +50,9 @@ namespace PracticalCodingTest.Data
             return false;
         }
 
-        public Password(string password)
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            PasswordString = password;
+            return Validate(value.ToString());
         }
-
     }
 }
