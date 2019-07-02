@@ -4,9 +4,9 @@
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
-
-using System.CodeDom.Compiler;
 using Foundation;
+using System;
+using System.CodeDom.Compiler;
 
 namespace PracticalCodingTest.Application
 {
@@ -25,17 +25,9 @@ namespace PracticalCodingTest.Application
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField UsernameTextField { get; set; }
 
-        [Action ("PasswordTextField_ValueChanged:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void PasswordTextField_ValueChanged (UIKit.UITextField sender);
-
         [Action ("SaveButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void SaveButton_TouchUpInside (UIKit.UIButton sender);
-
-        [Action ("UsernameTextField_ValueChanged:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UsernameTextField_ValueChanged (UIKit.UITextField sender);
 
         void ReleaseDesignerOutlets ()
         {

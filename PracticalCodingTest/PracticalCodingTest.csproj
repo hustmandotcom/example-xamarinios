@@ -140,6 +140,7 @@
     <Compile Include="Extensions\UIViewControllerExtensions.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="TEst.cs" />
     <Compile Include="UserTableViewController.cs" />
     <Compile Include="UserTableViewController.designer.cs">
       <DependentUpon>UserTableViewController.cs</DependentUpon>

@@ -1,4 +1,5 @@
 using System;
+using Foundation;
 using PracticalCodingTest.Application.Extensions;
 using PracticalCodingTest.Data;
 using PracticalCodingTest.DomainInterfaces;
@@ -13,8 +14,41 @@ namespace PracticalCodingTest.Application
         private User _newUser = User.DefaultUser();
 
         #region Class
+
         public AddUserViewController(IntPtr handle) : base(handle)
         {
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            ListenToEvents(true);
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            ListenToEvents(false);
+        }
+
+        private void ListenToEvents(bool listen)
+        {
+            UsernameTextField.ShouldChangeCharacters -= UsernameTextFieldShouldChangeCharacters;
+            PasswordTextField.ShouldChangeCharacters -= PasswordTextFieldShouldChangeCharacters;
+            if (listen)
+            {
+                UsernameTextField.ShouldChangeCharacters += UsernameTextFieldShouldChangeCharacters;
+                PasswordTextField.ShouldChangeCharacters += PasswordTextFieldShouldChangeCharacters;
+            }
+        }
+
+        #endregion
+
+        #region Private
+
+        private void ResetView()
+        {
+            UsernameTextField.Text = "";
+            PasswordTextField.Text = "";
+            _newUser = User.DefaultUser();
         }
 
         #endregion
@@ -34,25 +68,22 @@ namespace PracticalCodingTest.Application
             }
 
             this.ShowSuccessAlert("A new user has been added");
-            ResetForm();
+            ResetView();
         }
 
-        private void ResetForm()
+        private bool PasswordTextFieldShouldChangeCharacters(UITextField textfield, NSRange range,
+            string replacementString)
         {
-            UsernameTextField.Text = "";
-            PasswordTextField.Text = "";
-            _newUser = User.DefaultUser();
-        }
-
-        partial void PasswordTextField_ValueChanged(UITextField sender)
-        {
-            _newUser.Password = sender.Text;
+            _newUser.Password = textfield.Text;
             _newUser.Validate();
+            return true;
         }
 
-        partial void UsernameTextField_ValueChanged(UITextField sender)
+        private bool UsernameTextFieldShouldChangeCharacters(UITextField textfield, NSRange range,
+            string replacementString)
         {
-            _newUser.Username = sender.Text;
+            _newUser.Username = textfield.Text;
+            return true;
         }
 
         #endregion
